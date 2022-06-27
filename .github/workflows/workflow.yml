@@ -62,9 +62,9 @@ jobs:
       run: dotnet nuget push nugetPackage/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }}  --source "github"
       
     - name: Pack Nuget Package
-      run: dotnet pack --configuration Release /p:Version=${{ steps.gitversion.outputs.SemVer }} --no-build --output .
+      run: dotnet pack src/BAPS.Extensions.SecretKeyValueFile/BAPS.Extensions.SecretKeyValueFileConfiguration.csproj --configuration Release /p:Version=${{ steps.gitversion.outputs.SemVer }} --no-build --output .
     - name: Push Nuget Package
-      run: dotnet nuget push BAPS.Extensions.SecretKeyValueFile.${{ steps.gitversion.outputs.SemVer }}.nupkg --source https://nuget.pkg.github.com/contactvpatel/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+      run: dotnet nuget push src/BAPS.Extensions.SecretKeyValueFile/bin/Release/BAPS.Extensions.SecretKeyValueFile.${{ steps.gitversion.outputs.SemVer }}.nupkg --source https://nuget.pkg.github.com/contactvpatel/index.json --api-key ${{ secrets.NUGET_API_KEY }}
     
     #Create release
     - name: Create Release
