@@ -2,9 +2,8 @@ name: Nuget Package Workflow
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    tags:        
+      - '*'
 
 jobs:
   build:
